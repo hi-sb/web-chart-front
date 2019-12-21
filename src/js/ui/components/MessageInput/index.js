@@ -1,7 +1,6 @@
-
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { ipcRenderer, isElectron } from '../../../platform';
+import {ipcRenderer, isElectron} from '../../../platform';
 import clazz from 'classname';
 
 import classes from './style.css';
@@ -51,7 +50,12 @@ export default class MessageInput extends Component {
         if (!members) {
             return;
         }
-        mentionMenuItems.push({ key: "所有人", value: '@' + conversation.target, avatar: groupInfo.portrait, searchKey: '所有人' + pinyin.letter('所有人', '', null) });
+        mentionMenuItems.push({
+            key: "所有人",
+            value: '@' + conversation.target,
+            avatar: groupInfo.portrait,
+            searchKey: '所有人' + pinyin.letter('所有人', '', null)
+        });
         let userIds = [];
         members.forEach(e => {
             userIds.push(e.memberId);
@@ -59,7 +63,12 @@ export default class MessageInput extends Component {
 
         let userInfos = wfc.getUserInfos(userIds, groupInfo.target);
         userInfos.forEach((e) => {
-            mentionMenuItems.push({ key: e.displayName, value: '@' + e.uid, avatar: e.portrait, searchKey: e.displayName + pinyin.letter(e.displayName, '', null) });
+            mentionMenuItems.push({
+                key: e.displayName,
+                value: '@' + e.uid,
+                avatar: e.portrait,
+                searchKey: e.displayName + pinyin.letter(e.displayName, '', null)
+            });
         });
 
         this.tribute = new Tribute({
@@ -70,7 +79,7 @@ export default class MessageInput extends Component {
                 // if (this.range.isContentEditable(this.current.element)) {
                 //     return '<span contenteditable="false"><a href="http://zurb.com" target="_blank" title="' + item.original.email + '">' + item.original.value + '</a></span>';
                 // }
-                this.mentions.push({ key: item.original.key, value: item.original.value });
+                this.mentions.push({key: item.original.key, value: item.original.value});
 
                 return '@' + item.original.key;
             },
@@ -152,7 +161,7 @@ export default class MessageInput extends Component {
     };
 
     toggleEmoji(show = !this.state.showEmoji) {
-        this.setState({ showEmoji: show });
+        this.setState({showEmoji: show});
     }
 
     audioCall(show = !this.state.showEmoji) {
@@ -176,7 +185,7 @@ export default class MessageInput extends Component {
                 }
 
                 let parts = [
-                    new window.Blob([new window.Uint8Array(args.raw)], { type: 'image/png' })
+                    new window.Blob([new window.Uint8Array(args.raw)], {type: 'image/png'})
                 ];
                 let file = new window.File(parts, args.filename, {
                     lastModified: new Date(),
@@ -227,7 +236,7 @@ export default class MessageInput extends Component {
             }
 
             let parts = [
-                new window.Blob([new window.Uint8Array(args.raw)], { type: 'image/png' })
+                new window.Blob([new window.Uint8Array(args.raw)], {type: 'image/png'})
             ];
             let file = new window.File(parts, args.filename, {
                 lastModified: new Date(),
@@ -237,8 +246,9 @@ export default class MessageInput extends Component {
             this.batchProcess(file);
         }
     }
+
     readClipImage(event) {
-        let result = { hasImage: false, file: null };
+        let result = {hasImage: false, file: null};
         if (event.clipboardData || event.originalEvent) {
             const clipboardData = (event.clipboardData || event.originalEvent.clipboardData);
             if (clipboardData.items) {
@@ -329,7 +339,7 @@ export default class MessageInput extends Component {
         var input = this.refs.input;
         if (mentionUser) {
             input.value += ' @' + mentionUser.displayName + ' ';
-            this.mentions.push({ key: mentionUser.displayName, value: '@' + mentionUser.uid });
+            this.mentions.push({key: mentionUser.displayName, value: '@' + mentionUser.uid});
             input.focus();
         }
     }
@@ -373,16 +383,16 @@ export default class MessageInput extends Component {
                         onClick={e => canisend && this.refs.uploader.click()}
                     />
 
-                    <i
-                        className="icon-ion-android-camera"
-                        id="videoCall"
-                        onClick={e => canisend && canStartVoip && this.videoCall()}
+                    <i hidden
+                       className="icon-ion-android-camera"
+                       id="videoCall"
+                       onClick={e => canisend && canStartVoip && this.videoCall()}
                     />
 
-                    <i
-                        className="icon-ion-ios-telephone"
-                        id="audioCall"
-                        onClick={e => canisend && canStartVoip && this.audioCall()}
+                    <i hidden
+                       className="icon-ion-ios-telephone"
+                       id="audioCall"
+                       onClick={e => canisend && canStartVoip && this.audioCall()}
                     />
 
                     <i

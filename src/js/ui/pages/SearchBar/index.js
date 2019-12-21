@@ -232,12 +232,16 @@ export default class SearchBar extends Component {
 
     render() {
         var {searching, history, result} = this.props;
+        var avaterSrc = '/assets/images/user-fallback.png';
+        if (document.getElementById("avater_img") != null && document.getElementById("avater_img").src !== avaterSrc) {
+            avaterSrc = document.getElementById("avater_img").src;
+        }
         return (
             <div className={classes.container} style={{
                 display: 'inline-flex',
                 padding: '5px 0px'
             }}>
-                <img id="avater_img" ref="avater_img" src="/assets/images/user-fallback.png" style={{
+                <img id="avater_img" ref="avater_img" src={avaterSrc} style={{
                     height: '60px',
                     width: '60px',
                     borderRadius: '50%',
