@@ -884,11 +884,7 @@ export default class ChatContent extends Component {
             }
 
             // Scroll to bottom when you receive message and you alread at the bottom
-            //BUG修复 底部判断改成范围 ，当处于底部300 个像素误差值阅读的时候滚动
-            if (viewport.scrollHeight-(viewport.clientHeight + viewport.scrollTop)<300) {
-                viewport.scrollTop = viewport.scrollHeight;
-                return;
-            }
+            viewport.scrollTop = viewport.scrollHeight;
 
             /*
             // Show the unread messages count
