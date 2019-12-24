@@ -7,7 +7,7 @@ export default class Config {
     static WSS_PORT = 8084;
 
     static STATIC_RESOURCE_PATH = 'https://static.wildfirechat.cn/'
-    static APP_SERVER = 'http://127.0.0.1:8888';
+    static APP_SERVER = 'http://wildfirechat.cn:8888';
     // 用于本地打包验证
     // static APP_SERVER = 'http://localhost:8888';
     static QR_CODE_PREFIX_PC_SESSION = "wildfirechat://pcsession/";
