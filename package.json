@@ -59,7 +59,7 @@
     "smooth-scroll-into-view-if-needed": "^1.1.23",
     "tmp": "0.0.33",
     "tributejs": "^3.6.0",
-    "underscore": "^1.9.1",
+    "underscore": "^1.12.1",
     "video-thumbnail-generator": "^1.1.3"
   },
   "devDependencies": {
